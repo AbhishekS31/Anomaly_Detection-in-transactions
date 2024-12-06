@@ -11,4 +11,5 @@ file_path = "C:\\Users\\Abhishek\\Downloads\\transaction_anomalies_dataset.csv"
 
 
 # Read the CSV file
-data = pd.read_csv(f
+data = pd.read_csv(file_path)
+print(data.head())
