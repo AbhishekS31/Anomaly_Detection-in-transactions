@@ -5,8 +5,11 @@ This project uses the Isolation Forest algorithm to detect anomalies in financia
 The project follows a simple workflow:
 
 ->Data Visualization: Visualize the transaction data using charts to uncover trends and identify potential outliers.
+
 ->Model Training: Train an Isolation Forest model on the dataset to learn the normal behavior of transactions.
+
 ->Anomaly Detection: The trained model identifies anomalous transactions, which are flagged as potential fraud or irregular activity.
+
 ->The goal of this project is to provide an automated solution for detecting unusual transactions and improving the efficiency of fraud detection systems.
 
 Key Features
