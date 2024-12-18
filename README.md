@@ -18,7 +18,7 @@ Key Features
 * Scalable: The model can be applied to various datasets with different features, making it adaptable to various use cases.
 
   
-Requirements
+Requirements--
 
 Python 3
 Libraries: pandas, numpy, matplotlib, seaborn, scikit-learn
@@ -26,6 +26,7 @@ Libraries: pandas, numpy, matplotlib, seaborn, scikit-learn
 
 Install dependencies with:
 bash:
+
 pip install -r requirements.txt
 
 # License
