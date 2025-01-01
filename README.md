@@ -25,7 +25,7 @@ You can try the live demo of the project here:
 - Detect anomalies in the dataset.
 
 ### 4. Model Evaluation:
-- Evaluate model performance using precision, recall, and F1-score, and display a classification report.
+- Evaluate model performance using precision, recall, and F1-score, and display a classification report
 
 ### 5. User Testing:
 - Users can input their own transaction details to check if they are flagged as anomalous or normal.
@@ -36,7 +36,6 @@ You can try the live demo of the project here:
 - **Model Evaluation**: Access detailed classification reports to evaluate the model's performance.
 - **Scalability**: The model can handle datasets of various sizes, adaptable to different fraud detection needs.
 
-## Project Setup
 
 ### Prerequisites
 - Python 3.x (preferably 3.7 or higher)
