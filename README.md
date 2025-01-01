@@ -7,6 +7,9 @@ The application leverages **Streamlit** for interactive data visualization and m
 You can try the live demo of the project here:  
 **[Live Project](https://anomaly-detetction.streamlit.app/)**
 
+Sample Dataset:
+**Dataset**: [sample_transactions.csv](https://github.com/AbhishekS31/Anomaly_detection-in-Transactions/blob/main/transaction_anomalies_dataset.csv)
+
 ## Project Workflow
 
 ### 1. Data Upload & Preprocessing:
