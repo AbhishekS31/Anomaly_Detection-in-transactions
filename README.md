@@ -4,6 +4,9 @@ This project implements an **Anomaly Detection** system using the **Isolation Fo
 
 The application leverages **Streamlit** for interactive data visualization and model evaluation, offering a user-friendly interface for uploading datasets, visualizing trends, training the model, and testing individual transactions for anomalies.
 
+You can try the live demo of the project here:  
+**[Live Project](https://anomaly-detetction.streamlit.app/)**
+
 ## Project Workflow
 
 ### 1. Data Upload & Preprocessing:
@@ -16,9 +19,9 @@ The application leverages **Streamlit** for interactive data visualization and m
 
 ### 3. Anomaly Detection with Isolation Forest:
 - Train the **Isolation Forest** model using features like:
-  - `Transaction_Amount`
-  - `Average_Transaction_Amount`
-  - `Frequency_of_Transactions`
+   - `Transaction_Amount`
+   - `Average_Transaction_Amount`
+   - `Frequency_of_Transactions`
 - Detect anomalies in the dataset.
 
 ### 4. Model Evaluation:
@@ -28,7 +31,6 @@ The application leverages **Streamlit** for interactive data visualization and m
 - Users can input their own transaction details to check if they are flagged as anomalous or normal.
 
 ## Key Features
-
 - **Interactive Dashboard**: View visualizations of transaction distributions, anomalies, and model performance metrics with Streamlit.
 - **Anomaly Detection**: Detect fraudulent transactions using the Isolation Forest model.
 - **Model Evaluation**: Access detailed classification reports to evaluate the model's performance.
@@ -37,12 +39,10 @@ The application leverages **Streamlit** for interactive data visualization and m
 ## Project Setup
 
 ### Prerequisites
-
 - Python 3.x (preferably 3.7 or higher)
 - The required Python libraries are listed in the `requirements.txt` file.
 
 ### Installation
-
 1. Clone the repository:
     ```bash
     git clone https://github.com/AbhishekS31/Anomaly_detection-in-Transactions.git
@@ -65,11 +65,9 @@ The application leverages **Streamlit** for interactive data visualization and m
     ```bash
     streamlit run app.py
     ```
-
-   This will start a local Streamlit server, and the app will be accessible via your browser at `http://localhost:8501`.
+    This will start a local Streamlit server, and the app will be accessible via your browser at `http://localhost:8501`.
 
 ## Files and Directories
-
 - **`app.py`**: Main Streamlit application file for the anomaly detection interface.
 - **`model.py`**: Contains the Isolation Forest model and functions to train and predict anomalies.
 - **`utils.py`**: Helper functions for data processing, visualization, and metrics calculation.
@@ -101,11 +99,9 @@ The classification report with precision, recall, and F1-score metrics is shown 
 Users can input transaction details via a form, and the model will predict whether the transaction is anomalous (fraudulent) or normal.
 
 ## Future Improvements
-
 - **Model Optimization**: Tune the Isolation Forest hyperparameters (e.g., contamination rate) and explore other anomaly detection models (e.g., One-Class SVM, Autoencoders).
 - **Handling Imbalanced Data**: Implement strategies for dealing with imbalanced datasets where fraudulent transactions are rare.
 - **Deployment**: Deploy the app as a web service for real-time anomaly detection in financial systems.
 
 ## License
-
 This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
