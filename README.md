@@ -21,7 +21,15 @@ Key Features
 Requirements
 
 Python 3
-Libraries: pandas, numpy, matplotlib, seaborn, scikit-learn
+Libraries: pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+scipy
+joblib
+streamlit
+
 
 
 Install dependencies with:
