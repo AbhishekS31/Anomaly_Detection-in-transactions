@@ -71,7 +71,29 @@ if uploaded_file is not None:
     # Create a DataFrame from the classification report
     report_df = pd.DataFrame(report).transpose()
 
-    # 15) Model Performance Summary
+    # 15) Create visualizations
+    # 1) Distribution of Transaction Amount
+    fig_amount = px.histogram(data, x='Transaction_Amount', nbins=20,
+                               title='Distribution of Transaction Amount')
+
+    # 2) Transaction Amount by Account Type (Box Plot)
+    fig_box_amount = px.box(data, x='Account_Type', y='Transaction_Amount',
+                            title='Transaction Amount by Account Type')
+
+    # 3) Average Transaction Amount vs. Age (Scatter Plot with Trendline)
+    fig_scatter_avg_amount_age = px.scatter(data, x='Age', y='Average_Transaction_Amount', color='Account_Type',
+                                            title='Average Transaction Amount vs. Age', trendline='ols')
+
+    # 4) Count of Transactions by Day of the Week (Bar Chart)
+    fig_day_of_week = px.bar(data, x='Day_of_Week',
+                             title='Count of Transactions by Day of the Week')
+
+    # 5) Correlation Heatmap
+    numeric_data = data.select_dtypes(include='number')  # Select only numeric columns
+    correlation_matrix = numeric_data.corr()
+    fig_corr_heatmap = px.imshow(correlation_matrix, title='Correlation Heatmap')
+
+    # 16) Model Performance Summary
     st.subheader("Model Performance Summary")
     show_report = st.selectbox("Would you like to see the model's classification report?", ["No", "Yes"])
 
@@ -79,33 +101,23 @@ if uploaded_file is not None:
         st.write("### Classification Report")
         st.dataframe(report_df)
 
-        # 1) Distribution of Transaction Amount
-        fig_amount = px.histogram(data, x='Transaction_Amount', nbins=20,
-                                   title='Distribution of Transaction Amount')
-        st.plotly_chart(fig_amount)
+        # Create two rows of columns for charts (2x2 grid)
+        col1, col2 = st.columns(2)  # First row with 2 columns
+        with col1:
+            st.plotly_chart(fig_amount)  # First chart
+        with col2:
+            st.plotly_chart(fig_box_amount)  # Second chart
 
-        # 2) Transaction Amount by Account Type (Box Plot)
-        fig_box_amount = px.box(data, x='Account_Type', y='Transaction_Amount',
-                                title='Transaction Amount by Account Type')
-        st.plotly_chart(fig_box_amount)
-
-        # 3) Average Transaction Amount vs. Age (Scatter Plot with Trendline)
-        fig_scatter_avg_amount_age = px.scatter(data, x='Age', y='Average_Transaction_Amount', color='Account_Type',
-                                                title='Average Transaction Amount vs. Age', trendline='ols')
-        st.plotly_chart(fig_scatter_avg_amount_age)
-
-        # 4) Count of Transactions by Day of the Week (Bar Chart)
-        fig_day_of_week = px.bar(data, x='Day_of_Week', 
-                                  title='Count of Transactions by Day of the Week')
-        st.plotly_chart(fig_day_of_week)
+        col3, col4 = st.columns(2)  # Second row with 2 columns
+        with col3:
+            st.plotly_chart(fig_scatter_avg_amount_age)  # Third chart
+        with col4:
+            st.plotly_chart(fig_day_of_week)  # Fourth chart
 
         # 5) Correlation Heatmap
-        numeric_data = data.select_dtypes(include='number')  # Select only numeric columns
-        correlation_matrix = numeric_data.corr()
-        fig_corr_heatmap = px.imshow(correlation_matrix, title='Correlation Heatmap')
         st.plotly_chart(fig_corr_heatmap)
 
-    # 16) Final Testing (User Input)
+    # 17) Final Testing (User Input)
     st.subheader("Enter Transaction Details to Check for Anomaly")
 
     # Get user inputs for features (Streamlit widgets)
