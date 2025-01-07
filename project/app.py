@@ -1,4 +1,5 @@
 import pandas as pd
+import plotly.express as px
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import IsolationForest
 from sklearn.metrics import classification_report
@@ -14,6 +15,11 @@ if uploaded_file is not None:
     # Read the uploaded CSV file into a pandas DataFrame
     data = pd.read_csv(uploaded_file)
 
+    # Check for required columns
+    required_columns = ['Transaction_Amount', 'Average_Transaction_Amount', 'Frequency_of_Transactions', 'Account_Type', 'Age', 'Day_of_Week']
+    if not all(col in data.columns for col in required_columns):
+        st.error("The dataset must contain the following columns: Transaction_Amount, Average_Transaction_Amount, Frequency_of_Transactions, Account_Type, Age, Day_of_Week.")
+    
     # 2) Calculate mean and standard deviation of Transaction Amount
     mean_amount = data['Transaction_Amount'].mean()
     std_amount = data['Transaction_Amount'].std()
@@ -65,7 +71,7 @@ if uploaded_file is not None:
     # Create a DataFrame from the classification report
     report_df = pd.DataFrame(report).transpose()
 
-    # Add a dropdown to allow the user to view the classification report
+    # 15) Model Performance Summary
     st.subheader("Model Performance Summary")
     show_report = st.selectbox("Would you like to see the model's classification report?", ["No", "Yes"])
 
@@ -73,10 +79,36 @@ if uploaded_file is not None:
         st.write("### Classification Report")
         st.dataframe(report_df)
 
-    # 15) Final Testing (User Input)
+        # 1) Distribution of Transaction Amount
+        fig_amount = px.histogram(data, x='Transaction_Amount', nbins=20,
+                                   title='Distribution of Transaction Amount')
+        st.plotly_chart(fig_amount)
+
+        # 2) Transaction Amount by Account Type (Box Plot)
+        fig_box_amount = px.box(data, x='Account_Type', y='Transaction_Amount',
+                                title='Transaction Amount by Account Type')
+        st.plotly_chart(fig_box_amount)
+
+        # 3) Average Transaction Amount vs. Age (Scatter Plot with Trendline)
+        fig_scatter_avg_amount_age = px.scatter(data, x='Age', y='Average_Transaction_Amount', color='Account_Type',
+                                                title='Average Transaction Amount vs. Age', trendline='ols')
+        st.plotly_chart(fig_scatter_avg_amount_age)
+
+        # 4) Count of Transactions by Day of the Week (Bar Chart)
+        fig_day_of_week = px.bar(data, x='Day_of_Week', 
+                                  title='Count of Transactions by Day of the Week')
+        st.plotly_chart(fig_day_of_week)
+
+        # 5) Correlation Heatmap
+        numeric_data = data.select_dtypes(include='number')  # Select only numeric columns
+        correlation_matrix = numeric_data.corr()
+        fig_corr_heatmap = px.imshow(correlation_matrix, title='Correlation Heatmap')
+        st.plotly_chart(fig_corr_heatmap)
+
+    # 16) Final Testing (User Input)
     st.subheader("Enter Transaction Details to Check for Anomaly")
 
-    # Get user inputs for features (streamlit widgets)
+    # Get user inputs for features (Streamlit widgets)
     user_inputs = []
     for feature in relevant_features:
         user_input = st.number_input(f"Enter the value for '{feature}':", min_value=0.0, step=0.1)
