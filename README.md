@@ -9,6 +9,7 @@ You can try the live demo of the project here:
 
 Sample Dataset:
 **Dataset**: [sample_transactions.csv](https://github.com/AbhishekS31/Anomaly_detection-in-Transactions/blob/main/transaction_anomalies_dataset.csv)
+(Note : you can use a different dataset with similar parameters)
 
 ## Project Workflow
 
