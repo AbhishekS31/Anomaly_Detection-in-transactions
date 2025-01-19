@@ -107,4 +107,4 @@ Users can input transaction details via a form, and the model will predict wheth
 - **Deployment**: Deploy the app as a web service for real-time anomaly detection in financial systems.
 
 ## License
-This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
+This project is currently not licensed. In the meantime, feel free to explore, modify, and use the code for educational purposes.
